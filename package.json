@@ -1,10 +1,8 @@
 {
-  "name": "packages-codealong",
+  "name": "custom-wordle",
   "version": "1.0.0",
-  "description": "Codealong for NPM lesson",
-  "homepage": "https://nology-tech.github.io/packages-codealong",
-  "author": "Dan Forder",
-  "private": true,
+  "description": "",
+  "main": "index.html",
   "scripts": {
     "build": "webpack --config ./webpack.config.js",
     "build:dev": "webpack --config ./webpack.config.dev.js",
@@ -12,8 +10,16 @@
     "start": "npm-run-all --parallel build:dev server",
     "deploy": "gh-pages -d build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HPTR/custom-wordle.git"
+  },
   "keywords": [],
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HPTR/custom-wordle/issues"
+  },
+  "homepage": "https://github.com/HPTR/custom-wordle#readme",
   "dependencies": {
     "canvas-confetti": "^1.5.1",
     "colorthief": "^2.3.2"
