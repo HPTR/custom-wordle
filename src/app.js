@@ -28,11 +28,54 @@ const toggleGameContainerVisibility = (event) => {
     return;
 }
 
+const createGuessRow = () => {
+    //Add catch for unchanged numofLetters box
+    
+    const tileCount = numOfLetters.value;
+    let rowOfCells = '';
+    const guessCell = `<div class="cell"></div>`
+
+
+    for (let i = 0; i < tileCount; i++) {
+        rowOfCells += guessCell;
+    }
+
+    const guessElement = (`<div class="guess">` + rowOfCells + `</div>`);
+    return guessElement;
 }
 
-const addElement = (event) => {
-    gameOptions.append('helloooo')
+const createGameGrid = () => {
+    //Add catch to clear if necessary?
+
+    let guesses = '';
+    const guessRow = createGuessRow();
+
+    for (let i = 0; i < numOfGuesses.value; i++) {
+        guesses += guessRow;
+    }
+    
+    return guesses;
 }
 
-playButton.addEventListener("click", generateWordGrid);
-playButton.addEventListener('click', addElement)
+const generatePlayArea = (event) => {
+    //This if statement might be unnecessary later on but good for now
+    if (gameContainer.hidden.toString() === 'false') {
+        playArea.innerHTML = "";
+        toggleGameContainerVisibility();
+        return;
+    }
+
+    playArea.insertAdjacentHTML('beforeend', createGameGrid());
+
+    toggleGameContainerVisibility();
+}
+
+const manageCurrentActiveCell = (event) => {
+
+}
+
+const handleLetterPress = (event) => {
+
+}
+
+playButton.addEventListener('click', generatePlayArea)
