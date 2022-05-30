@@ -96,7 +96,7 @@ const handleDeletePress = (event) => {
             console.log('pink');
             currentCell.innerText = "";
             currentCell.classList.add('empty');
-            activeGuess.dataset.letters.slice(0, -1); 
+            activeGuess.dataset.letters = activeGuess.dataset.letters.slice(0, -1); 
             return
         }
     }
