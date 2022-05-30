@@ -8,6 +8,7 @@ const numOfLetters = document.querySelector('.number-of-letters');
 const numOfGuesses = document.querySelector('.number-of-guesses');
 const allLetters = document.querySelectorAll('.keyboard__button--letter');
 const deleteButton = document.querySelector('.keyboard__button--delete');
+const enterButton = document.querySelector('.keyboard__button--enter');
 let solution;
 
 const generateWordOfLength = async (length) => {
@@ -102,6 +103,29 @@ const handleDeletePress = (event) => {
     }
 }
 
+const handleEnterPress = async (event) => {
+    const guess = document.querySelector('.guess').dataset.letters;
+    let isValidWord = false;
+
+    const validatedWord = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
+        .then((response) => response.json())
+        .then((array) => {
+            return array[0].word;
+        })
+    console.log(validatedWord);
+
+
+    if (validatedWordJSON) {
+        isValidWord = true;
+        computeGuess(validatedWord, solution)
+    }
+}
+
+const computeGuess = (guess, solution) => {
+    
+}
+
 playButton.addEventListener('click', generatePlayArea);
 allLetters.forEach(letter => letter.addEventListener('click', handleLetterPress));
 deleteButton.addEventListener('click', handleDeletePress);
+enterButton.addEventListener('click', handleEnterPress);
