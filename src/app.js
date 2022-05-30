@@ -36,14 +36,14 @@ const createGuessRow = () => {
     
     const tileCount = numOfLetters.value;
     let rowOfCells = '';
-    const guessCell = `<div class="cell"></div>`
+    const guessCell = `<div class="cell empty"></div>`
 
 
     for (let i = 0; i < tileCount; i++) {
         rowOfCells += guessCell;
     }
 
-    const guessElement = (`<div class="guess">` + rowOfCells + `</div>`);
+    const guessElement = (`<div class="guess" data-letters="">` + rowOfCells + `</div>`);
     return guessElement;
 }
 
@@ -102,5 +102,6 @@ const handleDeletePress = (event) => {
     }
 }
 
+playButton.addEventListener('click', generatePlayArea);
 allLetters.forEach(letter => letter.addEventListener('click', handleLetterPress));
 deleteButton.addEventListener('click', handleDeletePress);
