@@ -9,10 +9,11 @@ module.exports = {
     filename: "app.js",
     path: path.resolve(__dirname, "build"),
   },
+  target: 'node',
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html",
-    }),
+    })
   ],
   module: {
     rules: [

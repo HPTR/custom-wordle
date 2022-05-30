@@ -3,15 +3,17 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/app.js",
+  watch: true,
   mode: "production",
   output: {
     filename: "app.js",
     path: path.resolve(__dirname, "build"),
   },
+  target: 'node',
   plugins: [
     new HtmlWebpackPlugin({
       template: "src/index.html",
-    }),
+    })
   ],
   module: {
     rules: [
