@@ -1,5 +1,4 @@
 import "./styles.scss";
-const randomWords = require('random-words')
 
 const gameOptions = document.querySelector('.game-options');
 const gameContainer = document.querySelector('.game-container');
@@ -10,18 +9,14 @@ const numOfGuesses = document.querySelector('.number-of-guesses');
 const allLetters = document.querySelectorAll('.keyboard__button--letter');
 const deleteButton = document.querySelector('.keyboard__button--delete');
 
+const generateWordOfLength = async (length) => {
+    const word =  await fetch(`http://random-word-api.herokuapp.com/word?lang=en&length=${length}`)
+        .then((response) => response.json())
+        .then((word) => {
+            return word[0];
+        });
 
-// Variation drops off significantly at 11 characters
-const generateWordOfLength = (length) => {
-    let isDesiredLength = false;
-    let currentWord = randomWords();
-    while(!isDesiredLength) {
-        currentWord = randomWords();
-        if (currentWord.length === length) {
-            isDesiredLength = true;
-        }
-    }
-    return currentWord;
+    return word;
 }
 
 const toggleGameContainerVisibility = (event) => {
