@@ -1,5 +1,5 @@
-const randomWords = require('random-words');
 import "./styles.scss";
+const randomWords = require('random-words')
 
 const gameOptions = document.querySelector('.game-options');
 const playArea = document.querySelector('.game-container');
