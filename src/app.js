@@ -8,6 +8,7 @@ const numOfLetters = document.querySelector('.number-of-letters');
 const numOfGuesses = document.querySelector('.number-of-guesses');
 const allLetters = document.querySelectorAll('.keyboard__button--letter');
 const deleteButton = document.querySelector('.keyboard__button--delete');
+let solution;
 
 const generateWordOfLength = async (length) => {
     const word =  await fetch(`http://random-word-api.herokuapp.com/word?lang=en&length=${length}`)
@@ -19,7 +20,7 @@ const generateWordOfLength = async (length) => {
     return word;
 }
 
-const toggleGameContainerVisibility = (event) => {
+const toggleGameContainerVisibility = () => {
     const state = gameContainer.hidden.toString();
     state === 'true' ? gameContainer.hidden = false : gameContainer.hidden = true;
     console.log('hi');
@@ -55,7 +56,11 @@ const createGameGrid = () => {
     return guesses;
 }
 
-const generatePlayArea = (event) => {
+const generatePlayArea = async () => {
+
+    solution = await generateWordOfLength(numOfLetters.value);
+    console.log(solution);
+
     //This if statement might be unnecessary later on but good for now
     if (gameContainer.hidden.toString() === 'false') {
         playArea.innerHTML = "";
