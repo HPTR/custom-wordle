@@ -7,6 +7,9 @@ const playArea = document.querySelector('.play-area');
 const playButton = document.querySelector('.play-button');
 const numOfLetters = document.querySelector('.number-of-letters');
 const numOfGuesses = document.querySelector('.number-of-guesses');
+const allLetters = document.querySelectorAll('.keyboard__button--letter');
+const deleteButton = document.querySelector('.keyboard__button--delete');
+
 
 // Variation drops off significantly at 11 characters
 const generateWordOfLength = (length) => {
@@ -70,12 +73,34 @@ const generatePlayArea = (event) => {
     toggleGameContainerVisibility();
 }
 
-const manageCurrentActiveCell = (event) => {
-
-}
-
 const handleLetterPress = (event) => {
+    const activeGuess = document.querySelector('.guess');
+    const activeCell = activeGuess.querySelector('.empty');
 
+    if(activeGuess.dataset.letters.length === activeGuess.children.length) {
+        return;
+    }
+
+    activeCell.innerText = event.target.innerText;
+    activeCell.classList.remove('empty');
+    activeGuess.dataset.letters += event.target.innerText;
 }
 
-playButton.addEventListener('click', generatePlayArea)
+const handleDeletePress = (event) => {
+    const activeGuess = document.querySelector('.guess');
+
+    for (let i = activeGuess.children.length - 1; i > -1 ; i--) {
+        let currentCell = activeGuess.children[i];
+
+        if (activeGuess.children[i].innerText !== "") {
+            console.log('pink');
+            currentCell.innerText = "";
+            currentCell.classList.add('empty');
+            activeGuess.dataset.letters.slice(0, -1); 
+            return
+        }
+    }
+}
+
+allLetters.forEach(letter => letter.addEventListener('click', handleLetterPress));
+deleteButton.addEventListener('click', handleDeletePress);
