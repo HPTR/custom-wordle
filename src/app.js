@@ -21,12 +21,13 @@ const generateWordOfLength = (length) => {
     return currentWord;
 }
 
-const generateWordGrid = (event) => {
-    const state = playArea.hidden.toString();
-    console.log('fire');
-    state === 'true' ? playArea.hidden = false : playArea.hidden = true;
-    event.stopPropagation();
-    event.preventDefault();
+const toggleGameContainerVisibility = (event) => {
+    const state = gameContainer.hidden.toString();
+    state === 'true' ? gameContainer.hidden = false : gameContainer.hidden = true;
+    console.log('hi');
+    return;
+}
+
 }
 
 const addElement = (event) => {
