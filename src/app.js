@@ -17,12 +17,27 @@ const generateNewSolution = (wordLength) => {
     const randomIndex = Math.floor(Math.random() * wordArray.length)
     return solution = wordArray[randomIndex];
 }
-//choose visible container?
-const toggleGameContainerVisibility = () => {
-    const state = gameContainer.hidden.toString();
-    state === 'true' ? gameContainer.hidden = false : gameContainer.hidden = true;
-    console.log('hi');
-    return;
+
+//Toggle visibility of containers with parameter
+const toggleContainerVisibility = (container) => {
+    let state;
+
+    switch(container) {
+        case 'game':
+            state = gameContainer.hidden.toString();
+            state === 'true' ? gameContainer.hidden = false : gameContainer.hidden = true;
+            break;
+        case 'options':
+            state = gameOptions.hidden.toString();
+            state === 'true' ? gameOptions.hidden = false : gameOptions.hidden = true;
+            break;
+        case 'endgame':
+            state = endgameContainer.hidden.toString();
+            state === 'true' ? endgameContainer.hidden = false : endgameContainer.hidden = true;
+            break;
+        default:
+            console.log('Invalid container parameter');
+    }
 }
 
 const createGuessRow = () => {
@@ -63,13 +78,13 @@ const generatePlayArea = () => {
     //This if statement might be unnecessary later on but good for now
     if (gameContainer.hidden.toString() === 'false') {
         playArea.innerHTML = "";
-        toggleGameContainerVisibility();
+        toggleContainerVisibility('game');
         return;
     }
 
     playArea.insertAdjacentHTML('beforeend', createGameGrid());
 
-    toggleGameContainerVisibility();
+    toggleContainerVisibility('game');
 }
 
 const handleLetterPress = (event) => {
@@ -101,7 +116,7 @@ const handleDeletePress = (event) => {
     }
 }
 
-const handleEnterPress = async (event) => {
+const handleEnterPress = (event) => {
     const activeGuess = getActiveGuess();
     const guess = activeGuess.dataset.letters;
 
@@ -138,7 +153,7 @@ const handleEnterPress = async (event) => {
 }
 
 const endGame = (isVictory) => {
-    toggleGameContainerVisibility();
+    toggleContainerVisibility('game');
     if (isVictory) {
         
 
