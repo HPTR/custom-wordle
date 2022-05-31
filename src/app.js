@@ -3,6 +3,7 @@ import { words, allWords } from "./data/data.js";
 
 const gameOptions = document.querySelector('.game-options');
 const gameContainer = document.querySelector('.game-container');
+const endgameContainer = document.querySelector('.endgame-container');
 const playArea = document.querySelector('.play-area');
 const playButton = document.querySelector('.play-button');
 const numOfLetters = document.querySelector('.number-of-letters');
