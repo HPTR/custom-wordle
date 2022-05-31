@@ -147,6 +147,21 @@ const handleEnterPress = async (event) => {
     }
 }
 
+const computeGuess = (guess) => {
+    const guessArr = guess.split('');
+    const solutionArr = solution.split('');
+
+    const indexArr = guessArr.map((guessLetter, guessIndex) => {
+        if (guessIndex === solutionArr.indexOf(guessLetter)) {
+            return ('green');
+        } else if (solutionArr.includes(guessLetter)) {
+            return ('yellow');
+        } else {
+            return ('black');
+        }
+    })
+    return indexArr;
+}
 
 const getActiveGuess = () => {
     return document.querySelector('.incomplete');
