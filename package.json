@@ -21,9 +21,6 @@
     "url": "https://github.com/HPTR/custom-wordle/issues"
   },
   "homepage": "https://github.com/HPTR/custom-wordle#readme",
-  "dependencies": {
-    "random-words": "^1.1.2"
-  },
   "devDependencies": {
     "css-loader": "^6.7.1",
     "gh-pages": "^4.0.0",
@@ -35,5 +32,8 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "random-word-by-length": "^0.1.0"
   }
 }

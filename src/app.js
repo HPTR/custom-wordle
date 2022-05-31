@@ -1,4 +1,6 @@
 import "./styles.scss";
+const randomWord = require('random-word-by-length');
+
 
 const gameOptions = document.querySelector('.game-options');
 const gameContainer = document.querySelector('.game-container');
@@ -11,14 +13,8 @@ const deleteButton = document.querySelector('.keyboard__button--delete');
 const enterButton = document.querySelector('.keyboard__button--enter');
 let solution;
 
-const generateWordOfLength = async (length) => {
-    const word =  await fetch(`http://random-word-api.herokuapp.com/word?lang=en&length=${length}`)
-        .then((response) => response.json())
-        .then((word) => {
-            return word[0];
-        });
-
-    return word;
+const generateNewSolution = (length) => {
+    return solution = randomWord(length);
 }
 
 const toggleGameContainerVisibility = () => {
