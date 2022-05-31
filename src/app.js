@@ -16,7 +16,7 @@ let solution;
 const generateNewSolution = (length) => {
     return solution = randomWord(length);
 }
-
+//choose visible container?
 const toggleGameContainerVisibility = () => {
     const state = gameContainer.hidden.toString();
     state === 'true' ? gameContainer.hidden = false : gameContainer.hidden = true;
@@ -36,7 +36,7 @@ const createGuessRow = () => {
         rowOfCells += guessCell;
     }
 
-    const guessElement = (`<div class="guess" data-letters="">` + rowOfCells + `</div>`);
+    const guessElement = (`<div class="guess incomplete" data-letters="">` + rowOfCells + `</div>`);
     return guessElement;
 }
 
@@ -54,8 +54,8 @@ const createGameGrid = () => {
 }
 
 const generatePlayArea = async () => {
-
-    solution = await generateWordOfLength(numOfLetters.value);
+//GENERATION SHOULD BE BOUND ELSEWHERE???
+    await generateNewSolution(numOfLetters.value);
     console.log(solution);
 
     //This if statement might be unnecessary later on but good for now
@@ -100,8 +100,9 @@ const handleDeletePress = (event) => {
 }
 
 const handleEnterPress = async (event) => {
-    const guess = document.querySelector('.guess').dataset.letters;
-    let isValidWord = false;
+    const activeGuess = getActiveGuess();
+    const guess = activeGuess.dataset.letters;
+
 
     const validatedWord = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
         .then((response) => response.json())
@@ -117,8 +118,9 @@ const handleEnterPress = async (event) => {
     }
 }
 
-const computeGuess = (guess, solution) => {
-    
+
+const getActiveGuess = () => {
+    return document.querySelector('.incomplete');
 }
 
 playButton.addEventListener('click', generatePlayArea);
