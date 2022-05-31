@@ -71,7 +71,7 @@ const generatePlayArea = async () => {
 }
 
 const handleLetterPress = (event) => {
-    const activeGuess = document.querySelector('.guess');
+    const activeGuess = getActiveGuess();
     const activeCell = activeGuess.querySelector('.empty');
 
     if(activeGuess.dataset.letters.length === activeGuess.children.length) {
@@ -84,7 +84,7 @@ const handleLetterPress = (event) => {
 }
 
 const handleDeletePress = (event) => {
-    const activeGuess = document.querySelector('.guess');
+    const activeGuess = getActiveGuess();
 
     for (let i = activeGuess.children.length - 1; i > -1 ; i--) {
         let currentCell = activeGuess.children[i];
