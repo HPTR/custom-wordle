@@ -151,10 +151,13 @@ const computeGuess = (guess) => {
 
     const indexArr = guessArr.map((guessLetter, guessIndex) => {
         if (guessIndex === solutionArr.indexOf(guessLetter)) {
+            solutionArr[solutionArr.indexOf(guessLetter)] = '';
             return ('green');
         } else if (solutionArr.includes(guessLetter)) {
+            solutionArr[solutionArr.indexOf(guessLetter)] = '';
             return ('yellow');
         } else {
+            solutionArr[solutionArr.indexOf(guessLetter)] = '';
             return ('black');
         }
     })
