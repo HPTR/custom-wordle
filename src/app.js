@@ -144,6 +144,12 @@ const handleEnterPress = async (event) => {
     }
     
 }
+
+const endGame = (isVictory) => {
+    toggleGameContainerVisibility();
+    if (isVictory) {
+        
+
     }
 }
 
