@@ -1,6 +1,5 @@
 import "./styles.scss";
-const randomWord = require('random-word-by-length');
-
+import { words, allWords } from "./data/data.js";
 
 const gameOptions = document.querySelector('.game-options');
 const gameContainer = document.querySelector('.game-container');
@@ -13,8 +12,10 @@ const deleteButton = document.querySelector('.keyboard__button--delete');
 const enterButton = document.querySelector('.keyboard__button--enter');
 let solution;
 
-const generateNewSolution = (length) => {
-    return solution = randomWord(length);
+const generateNewSolution = (wordLength) => {
+    const wordArray = words[wordLength];
+    const randomIndex = Math.floor(Math.random() * wordArray.length)
+    return solution = wordArray[randomIndex];
 }
 //choose visible container?
 const toggleGameContainerVisibility = () => {
@@ -53,9 +54,10 @@ const createGameGrid = () => {
     return guesses;
 }
 
-const generatePlayArea = async () => {
+const generatePlayArea = () => {
 //GENERATION SHOULD BE BOUND ELSEWHERE???
-    await generateNewSolution(numOfLetters.value);
+    generateNewSolution(numOfLetters.value);
+    console.log(allWords.includes(solution));
     console.log(solution);
 
     //This if statement might be unnecessary later on but good for now
@@ -108,25 +110,15 @@ const handleEnterPress = async (event) => {
         return
     };
 
-    const validatedWord = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Not a real word')
-        })
-        .then((responseJSON) => {
-            return responseJSON[0].word;
-        })
-        .catch((error) => {
-            console.warn(error)
-            return undefined;
-        });
+    let validatedWord;
+
+    allWords.includes(guess.toLowerCase()) ? validatedWord = guess : validatedWord = undefined;
+
     console.log(validatedWord);
 
 
     if (validatedWord) {
-        const resultArr = computeGuess(validatedWord);
+        const resultArr = computeGuess(validatedWord.toLowerCase());
 
         resultArr.forEach((colour, index) => {
             activeGuess.children[index].style.backgroundColor = colour;
