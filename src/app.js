@@ -103,18 +103,47 @@ const handleEnterPress = async (event) => {
     const activeGuess = getActiveGuess();
     const guess = activeGuess.dataset.letters;
 
+    if (guess.length < numOfLetters.value) {
+        console.log('Not enough letters');
+        return
+    };
 
     const validatedWord = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`)
-        .then((response) => response.json())
-        .then((array) => {
-            return array[0].word;
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Not a real word')
         })
+        .then((responseJSON) => {
+            return responseJSON[0].word;
+        })
+        .catch((error) => {
+            console.warn(error)
+            return undefined;
+        });
     console.log(validatedWord);
 
 
-    if (validatedWordJSON) {
-        isValidWord = true;
-        computeGuess(validatedWord, solution)
+    if (validatedWord) {
+        const resultArr = computeGuess(validatedWord);
+
+        resultArr.forEach((colour, index) => {
+            activeGuess.children[index].style.backgroundColor = colour;
+            activeGuess.children[index].style.color = 'white';
+        })
+        activeGuess.classList.remove('incomplete');
+
+        if (resultArr.every(colour => colour === 'green')) {
+            console.log('winner');
+            endGame(true);
+        } else if (!activeGuess.nextSibling) {
+            console.log('loser');
+            endGame(false);
+        }
+    }
+    
+}
     }
 }
 
