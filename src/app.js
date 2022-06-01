@@ -12,6 +12,7 @@ const numOfGuesses = document.querySelector('.game-options__select--number-of-gu
 const allLetters = document.querySelectorAll('.keyboard__button--letter');
 const deleteButton = document.querySelector('.keyboard__button--delete');
 const enterButton = document.querySelector('.keyboard__button--enter');
+const playAgain = document.querySelector('.endgame-buttons__button--replay');
 let solution;
 
 const generateNewSolution = (wordLength) => {
@@ -236,3 +237,4 @@ playButton.addEventListener('click', handlePlayPress);
 allLetters.forEach(letter => letter.addEventListener('click', handleLetterPress));
 deleteButton.addEventListener('click', handleDeletePress);
 enterButton.addEventListener('click', handleEnterPress);
+playAgain.addEventListener('click', handlePlayPress);
