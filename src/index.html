@@ -12,41 +12,51 @@
 
     <h1>Custom Wordle</h1>
 
-    <div class="game-options">
-        <label for="number-of-letters"># of letters:</label>
-        <select name="number-of-letters" class="number-of-letters">
-            <option disabled selected>Select</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-        </select>
-        <br>
-        <label for="number-of-guesses"># of guesses:</label>
-        <select name="number-of-guesses" class="number-of-guesses">
-            <option disabled selected>Select</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <br>
-        <label for="hard-mode">Hard Mode</label>
-        <input type="checkbox" name="hard-mode">
-        <p>Difficulty</p>
-        <button class="play-button">Play</button>
+    <div class="game-options-container">
+        <div class="game-options">
+            <p>Welcome to Custom Wordle! Choose the amount of letters and guesses you would like, then click play to start!</p>
+            <div class="game-options__option-container">
+                <label class="game-options__label" for="number-of-letters"># of letters:</label>
+                <select class="game-options__select game-options__select--number-of-letters" name="number-of-letters">
+                    <option disabled selected>Select</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+            </div>
+            <div class="game-options__option-container">
+                <label class="game-options__label" for="number-of-guesses"># of guesses:</label>
+                <select class="game-options__select game-options__select--number-of-guesses" name="number-of-guesses">
+                    <option disabled selected>Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <!-- <div class="game-options__option-container">
+                <label class="game-options__label" for="hard-mode">Hard Mode</label>
+                <input type="checkbox" name="hard-mode">
+            </div>
+            <div class="game-options__option-container">
+                <p>Difficulty</p>
+                <div></div>
+            </div> -->
+            <button class="game-options__play-button">Play</button>
+        </div>
     </div>
 
     <div class="game-container" hidden>
