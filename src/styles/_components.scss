@@ -25,7 +25,7 @@
     height: 100%;
   }
 
-  &__play-button {
+  &__button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +59,8 @@
   &__cell {
     width: 40px;
     height: 40px;
-    border: 2px solid black;
+    border: 2px solid $color-black;
+    border-radius: 5px;
     margin: 3px;
     display: flex;
     justify-content: center;
@@ -125,9 +126,11 @@
   align-items: center;
 
   &__cell {
-    width: 40px;
-    height: 40px;
-    border: 2px solid black;
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    border: 2px solid $color-black;
+    border-radius: 5px;
     margin: 3px;
     display: flex;
     justify-content: center;
@@ -153,7 +156,6 @@
       border-radius: 15px;
       font-weight: bold;
       margin: 5vh 0;
-    }
   }
 }
 
