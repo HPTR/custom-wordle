@@ -134,19 +134,20 @@
     align-items: center;
   }
 
-  .guess { 
+  &__answer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    width: 100%;
   }
+}
 
-  .cell {
-    width: 40px;
-    height: 40px;
-    border: 2px solid black;
-    margin: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.color-green {
+  background-color: $color-green;
+}
+
+.color-yellow {
+  background-color: $color-yellow;
+}
+
+.color-black {
+  background-color: $color-black;
+}
