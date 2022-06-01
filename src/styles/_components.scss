@@ -117,24 +117,21 @@
 
 }
 
-  button[data-state='present'] {
-    background-color: var(--key-bg-present);
-    color: var(--key-evaluated-text-color);
-  }
+.endgame-screen {
 
-  button[data-state='absent'] {
-    background-color: var(--key-bg-absent);
-    color: var(--key-evaluated-text-color);
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 
-  .play-area {
-    background-color: rgb(117, 117, 117);
+  &__cell {
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    margin: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    flex-wrap: wrap;
   }
 
   .guess { 
