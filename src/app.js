@@ -189,20 +189,43 @@ const endGame = (isVictory) => {
 const computeGuess = (guess) => {
     const guessArr = guess.split('');
     const solutionArr = solution.split('');
+    let newArr = guessArr.map(letter => letter = '');
 
-    const indexArr = guessArr.map((guessLetter, guessIndex) => {
+    guessArr.forEach((guessLetter, guessIndex) => {
+        document.querySelector(`.${guessLetter.toLowerCase()}`).style.color = 'white';
         if (guessIndex === solutionArr.indexOf(guessLetter)) {
             solutionArr[solutionArr.indexOf(guessLetter)] = '';
-            return ('green');
-        } else if (solutionArr.includes(guessLetter)) {
+            document.querySelector(`.${guessLetter.toLowerCase()}`).classList.add(`color-green`);
+            newArr[guessIndex] = 'green';
+        };
+    });
+
+    guessArr.forEach((guessLetter, guessIndex) => {
+        document.querySelector(`.${guessLetter.toLowerCase()}`).style.color = 'white';
+        if (solutionArr.includes(guessLetter)) {
             solutionArr[solutionArr.indexOf(guessLetter)] = '';
-            return ('yellow');
-        } else {
-            solutionArr[solutionArr.indexOf(guessLetter)] = '';
-            return ('black');
-        }
-    })
-    return indexArr;
+            if (newArr[guessIndex] === '') {
+                if (!document.querySelector(`.${guessLetter.toLowerCase()}`).classList.contains('color-green')) {
+                    document.querySelector(`.${guessLetter.toLowerCase()}`).classList.add(`color-yellow`);
+                }
+                newArr[guessIndex] = 'yellow';
+            }
+        };
+    });
+
+    guessArr.forEach((guessLetter, guessIndex) => {
+        document.querySelector(`.${guessLetter.toLowerCase()}`).style.color = 'white';
+        if (!solutionArr.includes(guessLetter)) {
+            if (newArr[guessIndex] === '') {
+                if (!document.querySelector(`.${guessLetter.toLowerCase()}`).classList.contains('color-green') && !document.querySelector(`.${guessLetter.toLowerCase()}`).classList.contains('color-yellow')) {
+                    document.querySelector(`.${guessLetter.toLowerCase()}`).classList.add(`color-black`);
+                }                
+                newArr[guessIndex] = 'black';
+            }
+        };
+    });
+
+    return newArr;
 }
 
 const getActiveGuess = () => {
