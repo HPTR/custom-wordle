@@ -1,13 +1,14 @@
 import "./styles.scss";
 import { words, allWords } from "./data/data.js";
 
-const gameOptions = document.querySelector('.game-options');
+const gameOptions = document.querySelector('.game-options-container');
 const gameContainer = document.querySelector('.game-container');
 const endgameContainer = document.querySelector('.endgame-container');
+const endgameScreen = document.querySelector('.endgame-screen');
 const playArea = document.querySelector('.play-area');
-const playButton = document.querySelector('.play-button');
-const numOfLetters = document.querySelector('.number-of-letters');
-const numOfGuesses = document.querySelector('.number-of-guesses');
+const playButton = document.querySelector('.game-options__play-button');
+const numOfLetters = document.querySelector('.game-options__select--number-of-letters');
+const numOfGuesses = document.querySelector('.game-options__select--number-of-guesses');
 const allLetters = document.querySelectorAll('.keyboard__button--letter');
 const deleteButton = document.querySelector('.keyboard__button--delete');
 const enterButton = document.querySelector('.keyboard__button--enter');
