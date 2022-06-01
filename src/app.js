@@ -66,22 +66,23 @@ const createGameGrid = (numberOfLetters, numberOfGuesses) => {
     return guesses;
 }
 
-const generatePlayArea = () => {
-//GENERATION SHOULD BE BOUND ELSEWHERE???
-    generateNewSolution(numOfLetters.value);
-    console.log(allWords.includes(solution));
-    console.log(solution);
+const handlePlayPress = () => {
+    const numberOfGuesses = numOfGuesses.value;
+    const numberOfLetters = numOfLetters.value;
 
-    //This if statement might be unnecessary later on but good for now
-    if (gameContainer.hidden.toString() === 'false') {
-        playArea.innerHTML = "";
-        toggleContainerVisibility('game');
+    if (numberOfGuesses === 'Select' || numberOfLetters === 'Select') {
+        console.log('please choose values');
         return;
     }
 
-    playArea.insertAdjacentHTML('beforeend', createGameGrid());
+    playArea.innerHTML = "";
+    generateNewSolution(numberOfLetters);
+    console.log(allWords.includes(solution));
+    console.log(solution);
 
-    toggleContainerVisibility('game');
+    playArea.insertAdjacentHTML('beforeend', createGameGrid(numberOfLetters, numberOfGuesses));
+
+    setVisibleContainer('game');
 }
 
 const handleLetterPress = (event) => {
@@ -104,7 +105,6 @@ const handleDeletePress = (event) => {
         let currentCell = activeGuess.children[i];
 
         if (activeGuess.children[i].innerText !== "") {
-            console.log('pink');
             currentCell.innerText = "";
             currentCell.classList.add('empty');
             activeGuess.dataset.letters = activeGuess.dataset.letters.slice(0, -1); 
@@ -133,7 +133,7 @@ const handleEnterPress = (event) => {
         const resultArr = computeGuess(validatedWord.toLowerCase());
 
         resultArr.forEach((colour, index) => {
-            activeGuess.children[index].style.backgroundColor = colour;
+            activeGuess.children[index].classList.add(`color-${colour}`);
             activeGuess.children[index].style.color = 'white';
         })
         activeGuess.classList.remove('incomplete');
