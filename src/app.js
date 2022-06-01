@@ -232,7 +232,7 @@ const getActiveGuess = () => {
     return document.querySelector('.incomplete');
 }
 
-playButton.addEventListener('click', generatePlayArea);
+playButton.addEventListener('click', handlePlayPress);
 allLetters.forEach(letter => letter.addEventListener('click', handleLetterPress));
 deleteButton.addEventListener('click', handleDeletePress);
 enterButton.addEventListener('click', handleEnterPress);
