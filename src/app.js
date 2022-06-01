@@ -150,10 +150,37 @@ const handleEnterPress = (event) => {
 }
 
 const endGame = (isVictory) => {
-    toggleContainerVisibility('game');
-    if (isVictory) {
-        
 
+    endgameScreen.innerHTML = "";
+    let solutionCells;
+
+
+    if (isVictory) {
+
+        solutionCells = solution.split('').map(letter => `<div class="endgame-screen__cell color-green" style="color:white">${letter.toUpperCase()}</div>`);
+        
+        endgameScreen.insertAdjacentHTML('beforeend', `
+            <h2 class="endgame-screen__status">You Got It!</h2>
+            <p class="endgame-screen__text">The answer was:</p>
+            <div class="endgame-screen__answer">${solutionCells.join('')}</div>
+            <p class="endgame-screen__text">Select below if you would like to play again with the same rules or with new ones</p>
+            <button class="endgame-screen__button endgame-screen__button--replay">Play again</button>
+            <button class="endgame-screen__button endgame-screen__button--settings">Change Settings</button>
+        `);
+
+
+    } else {
+
+        solutionCells = solution.split('').map(letter => `<div class="endgame-screen__cell color-black" style="color:white">${letter.toUpperCase()}</div>`);
+
+        endgameScreen.insertAdjacentHTML('beforeend', `
+        <h2 class="endgame-screen__status">Unlucky!</h2>
+        <p class="endgame-screen__text">The answer was:</p>
+        <div class="endgame-screen__answer">${solutionCells.join('')}</div>
+        <p class="endgame-screen__text">Select below if you would like to play again with the same rules or with new ones</p>
+        <button class="endgame-screen__button endgame-screen__button--replay">Play again</button>
+        <button class="endgame-screen__button endgame-screen__button--settings">Change Settings</button>
+    `);
     }
 }
 
