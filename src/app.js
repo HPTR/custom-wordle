@@ -20,22 +20,23 @@ const generateNewSolution = (wordLength) => {
     return solution = wordArray[randomIndex];
 }
 
-//Toggle visibility of containers with parameter
-const toggleContainerVisibility = (container) => {
-    let state;
+const setVisibleContainer = (container) => {
 
     switch(container) {
         case 'game':
-            state = gameContainer.hidden.toString();
-            state === 'true' ? gameContainer.hidden = false : gameContainer.hidden = true;
+            gameContainer.hidden = false;
+            gameOptions.hidden = true;
+            endgameContainer.hidden = true;
             break;
         case 'options':
-            state = gameOptions.hidden.toString();
-            state === 'true' ? gameOptions.hidden = false : gameOptions.hidden = true;
+            gameContainer.hidden = true;
+            gameOptions.hidden = false;
+            endgameContainer.hidden = true;            
             break;
         case 'endgame':
-            state = endgameContainer.hidden.toString();
-            state === 'true' ? endgameContainer.hidden = false : endgameContainer.hidden = true;
+            gameContainer.hidden = true;
+            gameOptions.hidden = true;
+            endgameContainer.hidden = false;            
             break;
         default:
             console.log('Invalid container parameter');
