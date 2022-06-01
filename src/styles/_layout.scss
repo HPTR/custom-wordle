@@ -1,27 +1,5 @@
-.container {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-auto-columns: 1fr;
-    gap: 15px 15px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "attempt-1 attempt-1 attempt-1 attempt-1 attempt-1 attempt-1 attempt-1 attempt-1 attempt-1 attempt-1"
-      "attempt-2 attempt-2 attempt-2 attempt-2 attempt-2 attempt-2 attempt-2 attempt-2 attempt-2 attempt-2"
-      "attempt-3 attempt-3 attempt-3 attempt-3 attempt-3 attempt-3 attempt-3 attempt-3 attempt-3 attempt-3"
-      "attempt-4 attempt-4 attempt-4 attempt-4 attempt-4 attempt-4 attempt-4 attempt-4 attempt-4 attempt-4"
-      "attempt-5 attempt-5 attempt-5 attempt-5 attempt-5 attempt-5 attempt-5 attempt-5 attempt-5 attempt-5"
-      "attempt-6 attempt-6 attempt-6 attempt-6 attempt-6 attempt-6 attempt-6 attempt-6 attempt-6 attempt-6";
-  }
-  
-  .attempt-1 { grid-area: attempt-1; }
-  
-  .attempt-2 { grid-area: attempt-2; }
-  
-  .attempt-3 { grid-area: attempt-3; }
-  
-  .attempt-4 { grid-area: attempt-4; }
-  
-  .attempt-5 { grid-area: attempt-5; }
-  
-  .attempt-6 { grid-area: attempt-6; }
-  
+body {
+    text-align: center;
+    background-color: #444444;
+    color: white;
+}
