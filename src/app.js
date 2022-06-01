@@ -182,6 +182,8 @@ const endGame = (isVictory) => {
         <button class="endgame-screen__button endgame-screen__button--settings">Change Settings</button>
     `);
     }
+
+    setVisibleContainer('endgame')
 }
 
 const computeGuess = (guess) => {
