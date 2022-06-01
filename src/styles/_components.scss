@@ -125,11 +125,9 @@
   align-items: center;
 
   &__cell {
-    width: 80px;
-    height: 80px;
-    font-size: 2rem;
-    border: 2px solid $color-black;
-    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
     margin: 3px;
     display: flex;
     justify-content: center;
@@ -139,6 +137,23 @@
   &__answer {
     display: flex;
     justify-content: center;
+  }
+}
+
+.endgame-buttons {
+  &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 100px;
+      font-size: 3rem;
+      background-color: #92B4EC;
+      border: none;
+      border-radius: 15px;
+      font-weight: bold;
+      margin: 5vh 0;
+    }
   }
 }
 
