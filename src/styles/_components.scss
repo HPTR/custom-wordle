@@ -66,13 +66,19 @@
     align-items: center;
   }
 }
+
+.keyboard {
+  margin: 10px 8px;
+  user-select: none;
+
+  &__row {
     display: flex;
     width: 100%;
     margin: 0 auto 8px;
     touch-action: manipulation;
   }
-  
-  button {
+
+  &__button {
     font-family: inherit;
     font-weight: bold;
     border: 0;
@@ -92,41 +98,24 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0.3);
     color: #000000;
     background-color: #D3D6DA;
+
+    &:focus {
+      outline: none;
+    }
   }
 
-  button:focus {
-    outline: none;
+  &__spacer {
+    &--half {
+      flex: 0.5;
+    }
+
+    &--one-and-a-half {
+      flex: 1.5;
+      font-size: 12px;
+    }
   }
 
-  button.fade {
-    transition: background-color 0.1s ease, color 0.1s ease;
-  }
-  
-  button:last-of-type {
-    margin: 0;
-  }
-  
-  .half {
-    flex: 0.5;
-  }
-  
-  .one {
-    flex: 1;
-  }
-
-  .one-and-a-half {
-    flex: 1.5;
-    font-size: 12px;
-  }
-  
-  .two {
-    flex: 2;
-  }
-
-  button[data-state='correct'] {
-    background-color: var(--key-bg-correct);
-    color: var(--key-evaluated-text-color);
-  }
+}
 
   button[data-state='present'] {
     background-color: var(--key-bg-present);
