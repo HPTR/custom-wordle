@@ -43,32 +43,26 @@ const setVisibleContainer = (container) => {
     }
 }
 
-const createGuessRow = () => {
-    //Add catch for unchanged numofLetters box
-    
-    const tileCount = numOfLetters.value;
-    let rowOfCells = '';
-    const guessCell = `<div class="cell empty"></div>`
+const generateRow = (numberOfLetters) => {
+    const guessCell = `<div class="play-area__cell empty"></div>`
+    let rowOfCells = ``;
 
-
-    for (let i = 0; i < tileCount; i++) {
+    for (let i = 0; i < numberOfLetters; i++) {
         rowOfCells += guessCell;
     }
 
-    const guessElement = (`<div class="guess incomplete" data-letters="">` + rowOfCells + `</div>`);
+    const guessElement = (`<div class="play-area__guess incomplete" data-letters="">` + rowOfCells + `</div>`);
     return guessElement;
 }
 
-const createGameGrid = () => {
-    //Add catch to clear if necessary?
+const createGameGrid = (numberOfLetters, numberOfGuesses) => {
+    const guessRow = generateRow(numberOfLetters);
+    let guesses = ``;
 
-    let guesses = '';
-    const guessRow = createGuessRow();
-
-    for (let i = 0; i < numOfGuesses.value; i++) {
+    for (let i = 0; i < numberOfGuesses; i++) {
         guesses += guessRow;
-    }
-    
+    };
+
     return guesses;
 }
 
