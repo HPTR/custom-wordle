@@ -1,3 +1,11 @@
-h1 {
-    background-color: red;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
 }
+
+$color-green: #4DD599;
+$color-yellow: #FFDC34;
+$color-black: #787C7E;
