@@ -77,6 +77,12 @@ const handlePlayPress = () => {
     }
 
     playArea.innerHTML = "";
+    allLetters.forEach(letter => {
+        letter.classList.remove('color-green');
+        letter.classList.remove('color-yellow');
+        letter.classList.remove('color-black');
+        letter.style.color = 'black';
+    });
     generateNewSolution(numberOfLetters);
     console.log(allWords.includes(solution));
     console.log(solution);
