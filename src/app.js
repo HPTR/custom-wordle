@@ -165,8 +165,6 @@ const endGame = (isVictory) => {
             <p class="endgame-screen__text">The answer was:</p>
             <div class="endgame-screen__answer">${solutionCells.join('')}</div>
             <p class="endgame-screen__text">Select below if you would like to play again with the same rules or with new ones</p>
-            <button class="endgame-screen__button endgame-screen__button--replay">Play again</button>
-            <button class="endgame-screen__button endgame-screen__button--settings">Change Settings</button>
         `);
 
 
@@ -179,8 +177,6 @@ const endGame = (isVictory) => {
         <p class="endgame-screen__text">The answer was:</p>
         <div class="endgame-screen__answer">${solutionCells.join('')}</div>
         <p class="endgame-screen__text">Select below if you would like to play again with the same rules or with new ones</p>
-        <button class="endgame-screen__button endgame-screen__button--replay">Play again</button>
-        <button class="endgame-screen__button endgame-screen__button--settings">Change Settings</button>
     `);
     }
 
