@@ -1,5 +1,7 @@
+@use "./base" as *;
+
 body {
     text-align: center;
-    background-color: #444444;
-    color: white;
+    background-color: $color-background;
+    color: $color-white;
 }
