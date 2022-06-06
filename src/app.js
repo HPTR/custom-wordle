@@ -13,6 +13,7 @@ const allLetters = document.querySelectorAll('.keyboard__button--letter');
 const deleteButton = document.querySelector('.keyboard__button--delete');
 const enterButton = document.querySelector('.keyboard__button--enter');
 const playAgain = document.querySelector('.endgame-buttons__button--replay');
+const changeSettings = document.querySelector('.endgame-buttons__button--settings');
 let solution;
 
 const generateNewSolution = (wordLength) => {
@@ -198,6 +199,7 @@ const computeGuess = (guess) => {
         document.querySelector(`.${guessLetter.toLowerCase()}`).style.color = 'white';
         if (guessIndex === solutionArr.indexOf(guessLetter)) {
             solutionArr[solutionArr.indexOf(guessLetter)] = '';
+            document.querySelector(`.${guessLetter.toLowerCase()}`).classList.remove(`color-yellow`);
             document.querySelector(`.${guessLetter.toLowerCase()}`).classList.add(`color-green`);
             newArr[guessIndex] = 'green';
         };
@@ -235,8 +237,13 @@ const getActiveGuess = () => {
     return document.querySelector('.incomplete');
 }
 
+const handleChangeSettings = () => {
+    setVisibleContainer('options');
+}
+
 playButton.addEventListener('click', handlePlayPress);
 allLetters.forEach(letter => letter.addEventListener('click', handleLetterPress));
 deleteButton.addEventListener('click', handleDeletePress);
 enterButton.addEventListener('click', handleEnterPress);
 playAgain.addEventListener('click', handlePlayPress);
+changeSettings.addEventListener('click', handleChangeSettings);
