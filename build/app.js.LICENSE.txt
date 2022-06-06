@@ -1,0 +1,7 @@
+/*!
+	unique-random
+	Generate random numbers that are consecutively unique
+	https://github.com/sindresorhus/unique-random
+	by Sindre Sorhus
+	MIT License
+*/
