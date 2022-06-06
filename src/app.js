@@ -33,7 +33,7 @@ const setVisibleContainer = (container) => {
         case 'options':
             gameContainer.hidden = true;
             gameOptions.hidden = false;
-            endgameContainer.hidden = true;            
+            endgameContainer.hidden = true;
             break;
         case 'endgame':
             gameContainer.hidden = true;
@@ -73,7 +73,7 @@ const handlePlayPress = () => {
     const numberOfLetters = numOfLetters.value;
 
     if (numberOfGuesses === 'Select' || numberOfLetters === 'Select') {
-        console.log('please choose values');
+        alert('Please choose a number of guesses and letters');
         return;
     }
 
@@ -85,7 +85,6 @@ const handlePlayPress = () => {
         letter.style.color = 'black';
     });
     generateNewSolution(numberOfLetters);
-    console.log(allWords.includes(solution));
     console.log(solution);
 
     playArea.insertAdjacentHTML('beforeend', createGameGrid(numberOfLetters, numberOfGuesses));
@@ -126,16 +125,13 @@ const handleEnterPress = (event) => {
     const guess = activeGuess.dataset.letters;
 
     if (guess.length < numOfLetters.value) {
-        console.log('Not enough letters');
+        alert('Not enough letters entered');
         return
     };
 
     let validatedWord;
 
     allWords.includes(guess.toLowerCase()) ? validatedWord = guess : validatedWord = undefined;
-
-    console.log(validatedWord);
-
 
     if (validatedWord) {
         const resultArr = computeGuess(validatedWord.toLowerCase());
@@ -147,10 +143,9 @@ const handleEnterPress = (event) => {
         activeGuess.classList.remove('incomplete');
 
         if (resultArr.every(colour => colour === 'green')) {
-            console.log('winner');
             endGame(true);
         } else if (!activeGuess.nextSibling) {
-            console.log('loser');
+
             endGame(false);
         }
     }
