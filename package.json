@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/HPTR/custom-wordle/issues"
   },
-  "homepage": "https://github.com/HPTR/custom-wordle#readme",
+  "homepage": "https://github.com/HPTR/custom-wordle",
   "devDependencies": {
     "css-loader": "^6.7.1",
     "gh-pages": "^4.0.0",
